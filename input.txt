@@ -1,0 +1,174 @@
+{ SECTION 1: Variable Declarations - All variables must be declared first }
+int x;
+int y;
+int z;
+real pi;
+real radius;
+real area;
+bool one;
+bool two;
+bool res;
+int counter;
+ 
+{ SECTION 2: Basic Assignments - Test 1-5 }
+x := 10;
+y := 20;
+z := x + y;
+pi := 3.14159;
+radius := 5.0;
+
+{ SECTION 3: Arithmetic Operations on INT - Test 6-10 }
+write x;
+write y;
+write z;
+x := x + 5;
+write x;
+y := y * 2;
+write y;
+
+{ SECTION 4: Arithmetic Operations on REAL - Test 11-14 }
+area := pi * radius * radius;
+write area;
+area := area / 2.0;
+write area;
+pi := pi + 1.0;
+write pi;
+
+{ SECTION 5: Mixed INT and REAL (auto-conversion)  , will produce real - Test 15-17 }
+area := radius + x;
+write area;
+area := 100 / pi;
+write area;
+
+{ SECTION 6: Comparison Operations (produce BOOLEAN) - Test 18-21 }
+one := x < y;
+if one then
+    write 1
+else
+    write 0
+end;
+
+two := x = 15;
+if two then
+    write 100
+else
+    write 200
+end;
+
+res := pi < 5.0;
+if res then
+    write 111
+else
+    write 222
+end;
+
+{ SECTION 7: Boolean in IF conditions - Test 22-23 }
+one := 1 < 2;
+if one then
+    write 999
+end;
+
+{ SECTION 8: Boolean in REPEAT conditions - Test 24-25 }
+counter := 3;
+repeat
+    write counter;
+    counter := counter - 1
+until counter = 0;
+
+{ SECTION 9: Complex expressions with mixed types - Test 26-28 }
+z := (x + y) * 2;
+write z;
+
+area := (radius + 2.5) * (pi - 1.0);
+write area;
+
+x := (10 + 20) / (3 + 2);
+write x;
+
+{ SECTION 10: Nested IF with boolean variables - Test 29-30 }
+one := x < 100;
+two := y < 100;
+
+if one then
+    if two then
+        write 777
+    else
+        write 888
+    end
+else
+    write 666
+end;
+
+{ SECTION 11: Power operator with different types - Test 31-33 }
+x := 2;
+y := 3;
+z := x ^ y;
+write z;
+
+area := 2.0 ^ 3.0;
+write area;
+
+{ SECTION 12: Division and type conversion - Test 34-35 }
+x := 10;
+y := 3;
+z := x / y;
+write z;
+
+area := 10.0 / 3.0;
+write area;
+
+{ SECTION 13: AND operator (only for integers) - Test 36 }
+x := 5;
+y := 3;
+z := x & y;
+write z;
+
+{ SECTION 14: Final complex test - Test 37 }
+x := 100;
+y := 50;
+if x < y then
+    write 0
+else
+    z := x - y;
+    write z
+end;
+
+
+
+
+
+
+{
+=============================================================================
+EXPECTED OUTPUT (37 test cases):
+=============================================================================
+Val: 10          (test 6 - initial x)
+Val: 20          (test 7 - initial y)  
+Val: 30          (test 8 - z = x + y)
+Val: 15          (test 9 - x = x + 5)
+Val: 40          (test 10 - y = y * 2)
+Val: 78.5398     (test 11 - area = pi * r * r)
+Val: 39.2699     (test 12 - area / 2)
+Val: 4.14159     (test 13 - pi + 1)
+Val: 20          (test 15 - radius + x, int promoted to real)
+Val: 24.1421     (test 16 - 100 / pi)
+Val: 1           (test 18 - flag1 is true: 15 < 40)
+Val: 100         (test 19 - flag2 is true: x = 15)
+Val: 222         (test 20 - result is false: 4.14 < 5.0 is true, so print 111... wait)
+Val: 111         (test 21 - actually result is true)
+Val: 999         (test 22 - 1 < 2 is true)
+Val: 3           (test 24 - counter loop)
+Val: 2           (test 24 - counter loop)
+Val: 1           (test 24 - counter loop)
+Val: 110         (test 26 - (15 + 40) * 2)
+Val: 23.5619     (test 27 - (5 + 2.5) * (4.14 - 1))
+Val: 6           (test 28 - 30 / 5, integer division)
+Val: 777         (test 29-30 - both conditions true)
+Val: 8           (test 31 - 2^3)
+Val: 8           (test 32 - 2.0^3.0)
+Val: 3           (test 34 - 10/3 integer)
+Val: 3.33333     (test 35 - 10.0/3.0 real)
+Val: 16          (test 36 - 5&3 = 25-9 = 16)
+Val: 50          (test 37 - 100-50)
+=============================================================================
+}

@@ -1,0 +1,16 @@
+{section 15 : int in IF condition , produce descriptive error}
+if x then
+    write 0
+else
+    write 1
+end
+
+{section 16 : boolean in arthemitic expression , produces error }
+one := x < y;
+y := x + one;
+
+{section 17 : used variable without declaration }
+w := 5;
+
+{section 18 : uncompatible type assignment }
+x := 5.5 ;
